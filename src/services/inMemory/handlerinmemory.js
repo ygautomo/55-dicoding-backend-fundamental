@@ -12,11 +12,11 @@ class NotesHandler {
     this.deleteNoteByIdHandler = this.deleteNoteByIdHandler.bind(this);
   }
 
-  async postNoteHandler(request, h) {
+  postNoteHandler(request, h) {
     try {
       this._validator.validateNotePayload(request.payload);
       const { title = 'untitled', body, tags } = request.payload;
-      const idNotes = await this._service.addNote({ title, body, tags });
+      const idNotes = this._service.addNote({ title, body, tags });
 
       const response = h.response({
         status: 'success',
@@ -48,8 +48,8 @@ class NotesHandler {
     }
   }
 
-  async getNotesHandler() {
-    const notes = await this._service.getNotes();
+  getNotesHandler() {
+    const notes = this._service.getNotes();
     return {
       status: 'success',
       data: {
@@ -58,10 +58,10 @@ class NotesHandler {
     };
   }
 
-  async getNoteByIdHandler(request, h) {
+  getNoteByIdHandler(request, h) {
     try {
       const { idNotes } = request.params;
-      const note = await this._service.getNoteById(idNotes);
+      const note = this._service.getNoteById(idNotes);
       return {
         status: 'success',
         data: {
@@ -89,13 +89,13 @@ class NotesHandler {
     }
   }
 
-  async putNoteByIdHandler(request, h) {
+  putNoteByIdHandler(request, h) {
     try {
       this._validator.validateNotePayload(request.payload);
       const { title, body, tags } = request.payload;
       const { idNotes } = request.params;
 
-      await this._service.editNoteById(idNotes, { title, body, tags });
+      this._service.editNoteById(idNotes, { title, body, tags } );
       return {
         status: 'success',
         message: 'Catatan berhasil diperbarui',
@@ -121,10 +121,10 @@ class NotesHandler {
     }
   }
 
-  async deleteNoteByIdHandler(request, h) {
+  deleteNoteByIdHandler(request, h) {
     try {
       const { idNotes } = request.params;
-      await this._service.deleteNoteById(idNotes);
+      this._service.deleteNoteById(idNotes);
       return {
         status: 'success',
         message: 'Catatan berhasil dihapus',

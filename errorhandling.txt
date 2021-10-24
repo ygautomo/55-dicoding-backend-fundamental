@@ -1,0 +1,4 @@
+Error Handling
+Error: listen EADDRINUSE: address already in use 127.0.0.1:5000
+netstat -lntp | grep node
+kill -HUP <PID>

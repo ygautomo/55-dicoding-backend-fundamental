@@ -11,17 +11,17 @@ const routes = (handler) => [
   },
   {
     method: 'GET',
-    path: '/notes/{id}',
+    path: '/notes/{idNotes}',
     handler: handler.getNoteByIdHandler, // getNoteByIdHandler mengembalikan "satu" note
   },
   {
     method: 'PUT',
-    path: '/notes/{id}',
+    path: '/notes/{idNotes}',
     handler: handler.putNoteByIdHandler, // putNoteByIdHandler hanya menerima dan mengubah "satu" note
   },
   {
     method: 'DELETE',
-    path: '/notes/{id}',
+    path: '/notes/{idNotes}',
     handler: handler.deleteNoteByIdHandler, // deleteNoteByIdHandler hanya menerima dan menghapus "satu" note
   },
 ];
