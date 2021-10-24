@@ -1,4 +1,4 @@
 node_modules
 rsa-public-key-dicoding.pem
-# .env
-# .prod.env
+.env
+.prod.env
